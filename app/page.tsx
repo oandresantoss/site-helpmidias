@@ -33,29 +33,24 @@ export default function MetaversoNeuralNetwork() {
   }
 
   useEffect(() => {
-    // Chatwoot Script - versão otimizada
-    const script = document.createElement("script")
-    script.src = "https://chat.helpmidiasdigital.com.br/packs/js/sdk.js"
-    script.async = true
-    script.defer = true
-
-    script.onload = () => {
-      if (window.chatwootSDK) {
-        window.chatwootSDK.run({
-          websiteToken: "HupGbJuuTe4HaeFhcPXo1GGS",
-          baseUrl: "https://chat.helpmidiasdigital.com.br",
-        })
+    // Chatwoot Script - exatamente como está no seu site
+    ;((d: Document, t: string) => {
+      var BASE_URL = "https://chat.helpmidiasdigital.com.br"
+      var g = d.createElement(t) as HTMLScriptElement
+      var s = d.getElementsByTagName(t)[0]
+      g.src = BASE_URL + "/packs/js/sdk.js"
+      g.defer = true
+      g.async = true
+      s.parentNode?.insertBefore(g, s)
+      g.onload = () => {
+        if ((window as any).chatwootSDK) {
+          ;(window as any).chatwootSDK.run({
+            websiteToken: "HAg9b1gnTm4WegEhcPXo1CGS",
+            baseUrl: BASE_URL,
+          })
+        }
       }
-    }
-
-    document.head.appendChild(script)
-
-    // Cleanup
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
-    }
+    })(document, "script")
   }, [])
 
   return (
