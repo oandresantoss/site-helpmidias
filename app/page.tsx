@@ -489,7 +489,7 @@ export default function MetaversoNeuralNetwork() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-400">Localização</div>
-                      <div className="text-white">Rio de Janeiro, Brasil</div>
+                      <div className="text-white">Niterói, RJ , Brasil</div>
                     </div>
                   </div>
                 </div>
