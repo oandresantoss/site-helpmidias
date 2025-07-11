@@ -33,24 +33,49 @@ export default function MetaversoNeuralNetwork() {
   }
 
   useEffect(() => {
-    // Chatwoot Script - exatamente como está no seu site
-    ;((d: Document, t: string) => {
-      var BASE_URL = "https://chat.helpmidiasdigital.com.br"
-      var g = d.createElement(t) as HTMLScriptElement
-      var s = d.getElementsByTagName(t)[0]
-      g.src = BASE_URL + "/packs/js/sdk.js"
-      g.defer = true
-      g.async = true
-      s.parentNode?.insertBefore(g, s)
-      g.onload = () => {
+    // Função para carregar o Chatwoot
+    const loadChatwoot = () => {
+      // Verificar se já foi carregado
+      if ((window as any).chatwootSDK) {
+        return
+      }
+      // Configurações do Chatwoot
+      ;(window as any).chatwootSettings = {
+        hideMessageBubble: false,
+        position: "right",
+        locale: "pt_BR",
+        type: "standard",
+      }
+
+      // Criar e carregar o script
+      const script = document.createElement("script")
+      script.src = "https://chat.helpmidiasdigital.com.br/packs/js/sdk.js"
+      script.defer = true
+      script.async = true
+
+      script.onload = () => {
         if ((window as any).chatwootSDK) {
           ;(window as any).chatwootSDK.run({
             websiteToken: "HAg9b1gnTm4WegEhcPXo1CGS",
-            baseUrl: BASE_URL,
+            baseUrl: "https://chat.helpmidiasdigital.com.br",
           })
         }
       }
-    })(document, "script")
+
+      script.onerror = () => {
+        console.log("Erro ao carregar Chatwoot, tentando novamente...")
+        setTimeout(loadChatwoot, 3000)
+      }
+
+      document.head.appendChild(script)
+    }
+
+    // Carregar após um delay
+    const timer = setTimeout(loadChatwoot, 2000)
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [])
 
   return (

@@ -1,30 +1,35 @@
-# Modern landing page
+# Help Mídias IA - Landing Page
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Uma landing page moderna e futurística para a Help Mídias IA, construída com Next.js, React e Tailwind CSS.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/andremissional-1081s-projects/v0-modern-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/hl126bHURxJ)
+## Características
 
-## Overview
+- Design futurístico com gradientes e animações
+- Totalmente responsivo
+- Integração com Chatwoot para suporte
+- Seções para serviços, comunidade e contato
+- Otimizado para SEO
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Tecnologias Utilizadas
 
-## Deployment
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Lucide React (ícones)
+- shadcn/ui (componentes)
 
-Your project is live at:
+## Como executar
 
-**[https://vercel.com/andremissional-1081s-projects/v0-modern-landing-page](https://vercel.com/andremissional-1081s-projects/v0-modern-landing-page)**
+1. Clone o repositório
+2. Instale as dependências: `npm install`
+3. Execute o projeto: `npm run dev`
+4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador
 
-## Build your app
+## Deploy
 
-Continue building your app on:
+Este projeto está configurado para deploy na Vercel.
 
-**[https://v0.dev/chat/projects/hl126bHURxJ](https://v0.dev/chat/projects/hl126bHURxJ)**
+## Licença
 
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+© 2024 Help Mídias IA. Todos os direitos reservados.
