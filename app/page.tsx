@@ -78,6 +78,12 @@ export default function MetaversoNeuralNetwork() {
     }
   }, [])
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       {/* Fixed Header/Navbar */}
@@ -188,7 +194,7 @@ export default function MetaversoNeuralNetwork() {
               variant="outline"
               className="px-8 py-4 text-lg border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 rounded-xl transform hover:scale-105 transition-all duration-300 bg-transparent"
             >
-              <Phone className="mr-2 h-5 w-5" />
+              <Zap className="mr-2 h-5 w-5" />
               Falar com IA
             </Button>
           </div>
@@ -300,7 +306,7 @@ export default function MetaversoNeuralNetwork() {
                     onClick={() => window.open("https://bit.ly/helpmidias-ia", "_blank")}
                     className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 border-0 rounded-xl transform hover:scale-105 transition-all duration-300`}
                   >
-                    <Phone className="mr-2 h-4 w-4" />
+                    <Zap className="mr-2 h-4 w-4" />
                     Falar com IA
                   </Button>
                 </CardContent>
@@ -446,10 +452,12 @@ export default function MetaversoNeuralNetwork() {
                 <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   Solicitar Consultoria
                 </h3>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div>
                     <Input
                       placeholder="Seu nome completo"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 rounded-xl"
                     />
                   </div>
@@ -457,6 +465,8 @@ export default function MetaversoNeuralNetwork() {
                     <Input
                       type="email"
                       placeholder="Email profissional"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 rounded-xl"
                     />
                   </div>
@@ -464,14 +474,30 @@ export default function MetaversoNeuralNetwork() {
                     <Textarea
                       placeholder="Descreva seu projeto e necessidades..."
                       rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="bg-black/50 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 rounded-xl resize-none"
                     />
                   </div>
                   <Button
-                    onClick={() => window.open("https://bit.ly/helpmidias-ia", "_blank")}
+                    onClick={() => {
+                      const message = `Olá! Gostaria de solicitar uma consultoria.
+
+*Nome:* ${formData.name || "Não informado"}
+*Email:* ${formData.email || "Não informado"}
+*Projeto/Necessidades:* ${formData.message || "Não informado"}
+
+Aguardo retorno!`
+
+                      const whatsappUrl = `https://wa.me/5521997878324?text=${encodeURIComponent(message)}`
+                      window.open(whatsappUrl, "_blank")
+
+                      // Limpar formulário após envio
+                      setFormData({ name: "", email: "", message: "" })
+                    }}
                     className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0 rounded-xl transform hover:scale-105 transition-all duration-300 py-3"
                   >
-                    <Phone className="mr-2 h-5 w-5" />
+                    <Zap className="mr-2 h-5 w-5" />
                     Conversar no WhatsApp
                   </Button>
                 </form>
